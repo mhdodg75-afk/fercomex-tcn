@@ -1,0 +1,9 @@
+# FERCOMEX-TCN — robots.txt
+# MODIFIEZ le domaine ci-dessous si vous en choisissez un autre.
+
+User-agent: *
+Allow: /
+Disallow: /confidentialite.html
+Disallow: /en/privacy.html
+
+Sitemap: https://www.fercomex-tcn.com/sitemap.xml

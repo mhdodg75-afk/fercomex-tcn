@@ -1,0 +1,44 @@
+# ============================================================
+# FERCOMEX-TCN — En-têtes de sécurité
+# ------------------------------------------------------------
+# Ce fichier est lu automatiquement par Netlify et Cloudflare Pages.
+# ⚠️ Il NE fonctionne PAS sur GitHub Pages, qui ne permet pas de
+#    personnaliser les en-têtes. Pour une sécurité maximale,
+#    hébergez sur Netlify ou Cloudflare Pages.
+#    (Une protection de secours est intégrée dans chaque page HTML.)
+# ============================================================
+
+/*
+  # Interdit l'affichage du site dans un cadre (anti-détournement de clics)
+  X-Frame-Options: DENY
+
+  # Empêche le navigateur de "deviner" le type des fichiers
+  X-Content-Type-Options: nosniff
+
+  # Limite les informations transmises aux autres sites
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Désactive les capteurs dont le site n'a pas besoin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+
+  # Isole le site des autres onglets
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+
+  # Bloque les anciens greffons Flash / PDF inter-domaines
+  X-Permitted-Cross-Domain-Policies: none
+
+  # N'autorise QUE ce dont le site a besoin : ses propres fichiers
+  # et l'envoi du formulaire vers Formspree. Aucun autre domaine.
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+
+  # Force le HTTPS pendant un an
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Les images et polices changent rarement : on les garde en cache un an
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+/videos/*
+  Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

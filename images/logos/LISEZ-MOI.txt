@@ -1,0 +1,34 @@
+DOSSIER DES LOGOS
+=================
+
+Déposez ici les logos des réseaux et partenaires, en PNG à fond
+transparent, environ 400 pixels de large :
+
+  gwcn.png                    (Global Waste Cleaning Network)
+  gaia.png                    (GAIA / no-burn.org)
+  ethics4growth.png           (Ethics4Growth)
+  business-fight-poverty.png  (Business Fight Poverty)
+  green-economy-canada.png    (Green Economy Canada)
+  eco-canada.png              (ECO Canada)
+  rotary.png                  (Rotary)
+
+Ensuite, dans index.html (et en/index.html pour la version anglaise),
+cherchez "LOGO :" et suivez l'instruction : remplacez la ligne
+   <span class="logo-texte">GWCN</span>
+par
+   <img src="images/logos/gwcn.png" alt="Logo GWCN">
+
+(Dans en/index.html, le chemin est ../images/logos/gwcn.png)
+
+OÙ TROUVER LES LOGOS
+--------------------
+Demandez le "member badge" ou le "logo pack" directement à chaque
+organisation — c'est gratuit pour les membres et c'est la version
+officielle, en haute qualité et autorisée.
+
+  GWCN      info@gwcnweb.org
+  GAIA      info@no-burn.org
+  Rotary    auprès du club Rotary local de Lubumbashi
+
+Évitez de copier un logo trouvé par une recherche d'images : la
+qualité est mauvaise et l'usage n'est pas autorisé.

@@ -1,0 +1,7 @@
+# Signalement responsable d'une faille de sécurité sur ce site.
+# MODIFIEZ l'adresse et la date d'expiration (à renouveler chaque année).
+
+Contact: mailto:contact@fercomex-tcn.com
+Expires: 2027-10-26T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://www.fercomex-tcn.com/.well-known/security.txt

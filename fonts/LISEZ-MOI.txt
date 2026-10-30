@@ -1,0 +1,35 @@
+POLICES DU SITE — comment ajouter les fichiers (3 minutes)
+===========================================================
+
+Le site n'appelle AUCUN service extérieur. Tant que ce dossier est
+vide, il affiche les polices déjà présentes sur l'ordinateur du
+visiteur (Georgia pour les titres, la police système pour le texte).
+Le site reste parfaitement lisible et élégant.
+
+Pour retrouver exactement les polices Fraunces et Inter du dessin
+d'origine, déposez ici ces 5 fichiers :
+
+  fraunces-600.woff2          (titres)
+  fraunces-400-italic.woff2   (devises et citations en italique)
+  inter-400.woff2             (texte courant)
+  inter-600.woff2             (texte en gras léger)
+  inter-700.woff2             (texte en gras)
+
+OÙ LES OBTENIR
+--------------
+1. Allez sur  https://gwfh.mranftl.com/fonts
+2. Cherchez « Fraunces », choisissez les graisses 600 et 400 italic,
+   format « woff2 », puis téléchargez.
+3. Refaites la même chose pour « Inter » avec les graisses 400, 600, 700.
+4. Renommez les fichiers exactement comme dans la liste ci-dessus et
+   déposez-les dans ce dossier.
+
+Rien d'autre à faire : le site les utilisera automatiquement.
+
+POURQUOI PAS GOOGLE FONTS ?
+---------------------------
+Charger les polices depuis les serveurs de Google transmet l'adresse IP
+de chaque visiteur à Google. En hébergeant les polices ici, aucune
+donnée ne quitte le site — ce qui permet d'écrire en toute honnêteté
+dans la politique de confidentialité que le site n'utilise aucun
+service tiers. Le site se charge aussi plus vite.

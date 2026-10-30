@@ -1,0 +1,20 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*~
+
+# Fichiers temporaires
+*.tmp
+*.log
+
+# ⚠️ Ne jamais verser de secrets dans ce dépôt :
+# mots de passe, clés d'API, dossiers des membres, pièces comptables.
+.env
+.env.*
+secrets/

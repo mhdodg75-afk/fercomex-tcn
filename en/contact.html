@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | FERCOMEX-TCN</title>
+  <meta name="description" content="Contact FERCOMEX-TCN: partnerships, volunteering, donations and information about our work in the DR Congo.">
+  <link rel="icon" href="../images/logo.jpg">
+  <!-- Protection de secours : s'applique même sur un hébergeur qui
+       ne lit pas le fichier _headers (GitHub Pages, par exemple). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="alternate" hreflang="fr" href="../contact.html">
+  <link rel="alternate" hreflang="en" href="contact.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="entete">
+    <div class="entete__barre">
+      <a href="index.html" class="marque" style="text-decoration:none;">
+        <img src="../images/logo.jpg" alt="FERCOMEX-TCN logo">
+        <span class="marque__nom">FERCOMEX-TCN
+          <span class="marque__slogan">The Land of Our Home</span>
+        </span>
+      </a>
+      <button class="menu-mobile-btn" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="team.html">Team</a>
+        <a href="our-work.html">Our work</a>
+        <a href="news.html">News</a>
+        <a href="contact.html" class="actif">Contact</a>
+        <span class="langues"><a href="../contact.html">FR</a><span>|</span><a href="#" class="actif">EN</a></span>
+        <a href="contact.html#donate" class="btn btn--don">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== RUBAN DE DEVISE TRILINGUE ====================
+       Les trois devises défilent automatiquement (français, anglais, swahili).
+       POUR MODIFIER UNE DEVISE : changez simplement le texte ci-dessous.
+       POUR CHANGER LA VITESSE : voir css/style.css, section "Ruban de devise". -->
+  <div class="ruban">
+    <div class="ruban__piste">
+      <p class="ruban__phrase"><span class="ruban__langue">FR</span>Notre Terre &mdash; Notre Prosp&eacute;rit&eacute;</p>
+      <p class="ruban__phrase"><span class="ruban__langue">EN</span>Our Land &mdash; Our Prosperity</p>
+      <p class="ruban__phrase"><span class="ruban__langue">SW</span>Udongo Wetu &mdash; Ufanisi Wetu</p>
+    </div>
+  </div>
+
+  <section class="bandeau-page">
+    <h1>Contact us</h1>
+    <p>Partnerships, volunteering, questions about our projects: write to us and we will reply promptly.</p>
+  </section>
+
+  <section class="section">
+    <div class="conteneur deux-colonnes" style="align-items:start;">
+      <div>
+        <span class="sur-titre">Write to us</span>
+        <h2>Send a message</h2>
+
+        <!-- IMPORTANT: use the SAME Formspree code as the French page. -->
+        <form class="form-contact" action="https://formspree.io/f/VOTRE-CODE-ICI" method="POST">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" required maxlength="100" autocomplete="name">
+
+          <label for="email">Your email address</label>
+          <input type="email" id="email" name="email" required maxlength="150" autocomplete="email">
+
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required maxlength="150">
+
+          <label for="message">Your message</label>
+          <textarea id="message" name="message" rows="6" required maxlength="3000"></textarea>
+
+          <input type="text" name="_gotcha" class="champ-cache" tabindex="-1" autocomplete="off">
+
+          <button type="submit" class="btn btn--vert">Send message</button>
+        </form>
+      </div>
+
+      <div>
+        <span class="sur-titre">Our details</span>
+        <h2>Where to find us</h2>
+        <div class="coordonnees">
+          <p><strong>Address:</strong> Kasungami, Lubumbashi, Haut-Katanga &mdash; DR Congo</p>
+          <p><strong>Email:</strong> <a href="mailto:contact@fercomex-tcn.com">contact@fercomex-tcn.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+243973975664">+243 973 975 664</a></p>
+        </div>
+
+        <h3 style="color:var(--vert-foret); margin-top:32px;">Follow us</h3>
+        <div class="coordonnees">
+          <a href="#">Facebook</a>
+          <a href="#">X (Twitter)</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--verte" id="donate">
+    <div class="conteneur" style="text-align:center;">
+      <h2>Support our work</h2>
+      <p style="max-width:620px; margin:16px auto 28px; color:#cfe3b8;">Every contribution directly strengthens food security, farmer training and environmental protection in the communities we serve. To make a donation or become a partner, contact us and we will share the secure procedure.</p>
+      <a href="mailto:contact@fercomex-tcn.com?subject=I%20would%20like%20to%20donate" class="btn btn--don">Write to us about donating</a>
+    </div>
+  </section>
+  <footer class="pied">
+    <div class="conteneur">
+      <div class="pied__grille">
+        <div>
+          <span class="marque__nom">FERCOMEX-TCN</span>
+          <p style="margin-top:12px; max-width:320px;">A Congolese NGO committed to community agriculture, environmental protection and sustainable development.</p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <a href="about.html">About</a>
+          <a href="team.html">Team</a>
+          <a href="our-work.html">Our work</a>
+          <a href="news.html">News</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h4>Take action</h4>
+          <a href="contact.html#donate">Donate</a>
+          <a href="contact.html">Become a partner</a>
+          <a href="contact.html">Volunteer</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>Kasungami, Lubumbashi, Haut-Katanga — DR Congo</p>
+          <a href="mailto:contact@fercomex-tcn.com">contact@fercomex-tcn.com</a>
+          <a href="tel:+243973975664">+243 973 975 664</a>
+        </div>
+      </div>
+      <div class="pied__bas">
+        <span>&copy; <span id="annee">2026</span> FERCOMEX-TCN — All rights reserved</span>
+        <span><a href="privacy.html" style="display:inline;">Privacy policy</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

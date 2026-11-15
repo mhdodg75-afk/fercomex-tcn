@@ -134,27 +134,85 @@ supprimez pas.**
 L'adresse affichée sur le site **n'existe pas encore**. Tant que ce n'est
 pas fait, tout message envoyé par le formulaire se perd.
 
-**À faire maintenant (5 minutes, gratuit, chez Cloudflare)**
+Solution retenue : **Zoho Mail, offre gratuite** — 5 boîtes aux lettres,
+5 Go chacune, avec votre propre nom de domaine. C'est la seule option
+gratuite qui permette aussi de **répondre** depuis `contact@fercomex-tcn.org`.
 
-1. Ouvrez https://dash.cloudflare.com, cliquez sur `fercomex-tcn.org`.
-2. Menu de gauche : **Email** → **Email Routing** → **Get started**.
-3. Créez une adresse : `contact` → destination : votre adresse Gmail.
-4. Cloudflare vous envoie un courriel de confirmation : cliquez le lien.
-5. Cloudflare ajoute tout seul les enregistrements DNS nécessaires.
+#### ⚠️ À savoir AVANT de commencer
 
-À partir de là, tout ce qui est envoyé à `contact@fercomex-tcn.org`
-arrive dans votre boîte habituelle.
+Sur l'offre gratuite, Zoho ne fournit **ni IMAP, ni POP, ni SMTP**, et
+ne fait **pas de redirection** vers une autre adresse. Conséquence
+concrète : **vous ne pourrez pas lire ce courrier dans Gmail.** Vous
+l'ouvrirez dans l'application **Zoho Mail** (gratuite, Android et
+iPhone) ou sur `mail.zoho.com`.
 
-**Limite à connaître :** cette solution permet de **recevoir**, pas
-d'**envoyer**. Si vous répondez, votre adresse personnelle apparaîtra.
-Pour une ONG qui écrit à des bailleurs, c'est une faiblesse réelle.
+C'est une application de plus sur le téléphone, mais c'est le prix à
+payer pour écrire à un bailleur depuis l'adresse de l'ONG plutôt que
+depuis une adresse Gmail personnelle.
 
-**Plus tard (20 minutes, gratuit) — pour aussi répondre depuis l'adresse
-de l'ONG :** créez un compte **Zoho Mail** (offre gratuite, jusqu'à
-5 boîtes) sur https://www.zoho.com/mail/, ajoutez le domaine
-`fercomex-tcn.org` et recopiez dans Cloudflare les enregistrements DNS
-que Zoho vous indique. Vous aurez alors de vraies boîtes aux lettres
-(`contact@`, `direction@`…) consultables depuis le téléphone.
+> Si vous avez déjà activé **Email Routing** chez Cloudflare :
+> désactivez-le d'abord (**Email** → **Email Routing** → **Settings** →
+> **Disable**). Les deux services se disputent les mêmes enregistrements
+> MX et ne peuvent pas fonctionner ensemble.
+
+#### Les étapes
+
+1. **Créer le compte.** Allez sur https://www.zoho.com/mail/ → **Pricing**
+   → descendez jusqu'à **Forever Free Plan** → **Sign Up Now**.
+   (L'offre gratuite n'est pas affichée en haut de page : il faut
+   descendre.) Choisissez **« Sign up with a domain I already own »** et
+   saisissez `fercomex-tcn.org`.
+
+2. **Prouver que le domaine est à vous.** Zoho affiche un enregistrement
+   TXT. Dans Cloudflare : `fercomex-tcn.org` → **DNS** → **Records** →
+   **Add record** → Type **TXT**, Name `@`, Content = la valeur donnée
+   par Zoho. Revenez chez Zoho et cliquez **Verify**.
+
+3. **Créer la boîte** `contact` → elle devient le compte administrateur.
+
+4. **Rediriger le courrier vers Zoho.** Toujours dans Cloudflare → DNS,
+   supprimez les anciens enregistrements **MX** s'il y en a, puis
+   ajoutez les trois que Zoho vous indique. Ils ressemblent à ceci :
+
+   | Type | Name | Mail server   | Priority |
+   |------|------|---------------|----------|
+   | MX   | `@`  | `mx.zoho.com`  | 10 |
+   | MX   | `@`  | `mx2.zoho.com` | 20 |
+   | MX   | `@`  | `mx3.zoho.com` | 50 |
+
+   ⚠️ Recopiez **exactement** les valeurs affichées par Zoho : elles
+   changent selon le centre de données où votre compte a été créé.
+
+5. **Prouver que vos courriels sont authentiques** (sinon ils partent
+   en indésirable chez vos bailleurs) :
+
+   | Type | Name              | Content |
+   |------|-------------------|---------|
+   | TXT  | `@`               | `v=spf1 include:zoho.com ~all` |
+   | TXT  | `zmail._domainkey` | la clé DKIM générée par Zoho |
+   | TXT  | `_dmarc`          | `v=DMARC1; p=none; rua=mailto:contact@fercomex-tcn.org` |
+
+   La clé DKIM se génère chez Zoho : **Admin Console** → **Domains** →
+   `fercomex-tcn.org` → **Email Configuration** → **DKIM**.
+
+   ⚠️ **Un seul enregistrement SPF** par domaine. Si un TXT commençant
+   par `v=spf1` existe déjà, **modifiez-le** au lieu d'en ajouter un
+   second — deux SPF annulent la protection.
+
+6. **Vérifier.** Depuis votre Gmail, écrivez à `contact@fercomex-tcn.org` :
+   le message doit arriver dans Zoho. Répondez depuis Zoho : la réponse
+   doit partir de `contact@fercomex-tcn.org`, et ne pas tomber dans les
+   indésirables.
+
+Comptez 20 à 30 minutes, dont une attente pour la propagation DNS
+(quelques minutes chez Cloudflare, parfois jusqu'à 24 h).
+
+#### Et après
+
+Vous pourrez créer jusqu'à 4 autres adresses gratuitement, par exemple
+`direction@` ou `partenariats@`. Pensez alors à activer la **double
+authentification** sur le compte Zoho : cette boîte deviendra l'adresse
+de référence de l'ONG, et donc une cible.
 
 ---
 

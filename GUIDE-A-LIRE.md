@@ -105,18 +105,56 @@ sur la page d'accueil `index.html`, section Actualités.)
 
 ---
 
-## ÉTAPE 4 — Activer le formulaire de contact
+## ÉTAPE 4 — L'adresse e-mail et le formulaire de contact
 
-Le formulaire utilise **Formspree** (gratuit, sécurisé, sans serveur) :
+### 4.1 — Le formulaire : rien à activer
 
-1. Créez un compte gratuit sur https://formspree.io avec l'adresse
-   e-mail de l'ONG.
-2. Cliquez « New Form », donnez-lui un nom, copiez l'adresse fournie
-   (elle ressemble à `https://formspree.io/f/abcdwxyz`).
-3. Dans `contact.html`, remplacez `VOTRE-CODE-ICI` par votre code.
+Le formulaire **fonctionne déjà**, sans compte à créer et sans rien à payer.
 
-Les messages arriveront directement dans votre boîte e-mail.
-Le champ invisible `_gotcha` bloque les robots spammeurs : ne le supprimez pas.
+Quand un visiteur clique « Préparer le message », son logiciel de
+messagerie s'ouvre avec le message déjà rédigé, et il n'a plus qu'à
+l'envoyer. Aucun message ne transite par une entreprise extérieure :
+c'est le visiteur qui vous écrit directement.
+
+Pourquoi ce choix plutôt qu'un service comme Formspree :
+
+- rien à renouveler, rien à payer, rien qui tombe en panne sans prévenir ;
+- aucun tiers ne lit vos échanges avec vos bailleurs ;
+- vous n'avez pas à déclarer un sous-traitant dans la page Confidentialité.
+
+Le champ invisible `_gotcha` piège les robots spammeurs : **ne le
+supprimez pas.**
+
+> Pour changer l'adresse de destination, modifiez `action="mailto:..."`
+> dans `contact.html` **et** dans `en/contact.html`. C'est le seul
+> endroit où l'adresse est écrite.
+
+### 4.2 — ⚠️ Indispensable : faire exister `contact@fercomex-tcn.org`
+
+L'adresse affichée sur le site **n'existe pas encore**. Tant que ce n'est
+pas fait, tout message envoyé par le formulaire se perd.
+
+**À faire maintenant (5 minutes, gratuit, chez Cloudflare)**
+
+1. Ouvrez https://dash.cloudflare.com, cliquez sur `fercomex-tcn.org`.
+2. Menu de gauche : **Email** → **Email Routing** → **Get started**.
+3. Créez une adresse : `contact` → destination : votre adresse Gmail.
+4. Cloudflare vous envoie un courriel de confirmation : cliquez le lien.
+5. Cloudflare ajoute tout seul les enregistrements DNS nécessaires.
+
+À partir de là, tout ce qui est envoyé à `contact@fercomex-tcn.org`
+arrive dans votre boîte habituelle.
+
+**Limite à connaître :** cette solution permet de **recevoir**, pas
+d'**envoyer**. Si vous répondez, votre adresse personnelle apparaîtra.
+Pour une ONG qui écrit à des bailleurs, c'est une faiblesse réelle.
+
+**Plus tard (20 minutes, gratuit) — pour aussi répondre depuis l'adresse
+de l'ONG :** créez un compte **Zoho Mail** (offre gratuite, jusqu'à
+5 boîtes) sur https://www.zoho.com/mail/, ajoutez le domaine
+`fercomex-tcn.org` et recopiez dans Cloudflare les enregistrements DNS
+que Zoho vous indique. Vous aurez alors de vraies boîtes aux lettres
+(`contact@`, `direction@`…) consultables depuis le téléphone.
 
 ---
 
@@ -170,8 +208,8 @@ Votre site est déjà conçu pour être très sûr :
 - ✅ Pas de cookies de suivi, pas de publicité
 
 Ce que VOUS devez faire :
-- 🔐 Mot de passe **long et unique** pour Netlify, Formspree et le registraire
-  (utilisez un gestionnaire de mots de passe comme Bitwarden, gratuit)
+- 🔐 Mot de passe **long et unique** pour GitHub, Cloudflare et votre
+  boîte e-mail (utilisez un gestionnaire comme Bitwarden, gratuit)
 - 🔐 Activez la **double authentification (2FA)** sur ces trois comptes
 - 🔐 Ne publiez **jamais** de coordonnées bancaires sur le site : pour les
   dons en ligne, on ajoutera plus tard un service de paiement sécurisé
@@ -211,8 +249,9 @@ français, faites la même modification dans le fichier anglais correspondant.
 Sinon les deux versions vont diverger.
 
 ### Le formulaire de contact anglais
-Mettez le **même code Formspree** dans `en/contact.html` que dans
-`contact.html` (cherchez `VOTRE-CODE-ICI` dans les deux fichiers).
+Il fonctionne déjà, comme le français. Si vous changez l'adresse de
+destination, changez-la dans les **deux** fichiers : cherchez
+`action="mailto:` dans `contact.html` et dans `en/contact.html`.
 
 ### Quelle langue s'affiche en premier ?
 Le visiteur arrive par défaut sur la version française (`index.html`).
@@ -265,9 +304,15 @@ commentaire).
 
 ## 🏷️ Les logos des réseaux et partenaires
 
-Le site affiche pour l'instant une **pastille colorée avec le sigle**
-(GWCN, GAIA, BFP…) à la place de chaque logo. C'est propre et lisible,
-mais les vrais logos feront plus professionnel.
+Seul **GAIA** a aujourd'hui son vrai logo sur le site. Pour les autres,
+le nom du réseau est **composé dans la police des titres** — pas de
+pastille, pas de cadre, pas d'encadré gris. C'est un choix délibéré :
+un nom bien typographié tient sa place à côté d'un vrai logo, alors
+qu'une pastille « en attendant » signale au visiteur qu'il manque
+quelque chose.
+
+Vous pouvez donc laisser le site ainsi aussi longtemps que nécessaire :
+rien n'a l'air inachevé.
 
 **Comment les ajouter :**
 
@@ -275,7 +320,7 @@ mais les vrais logos feront plus professionnel.
    `images/logos/LISEZ-MOI.txt` pour savoir à qui le demander).
 2. Déposez le fichier dans `images/logos/` sous le nom indiqué.
 3. Dans `index.html`, cherchez `LOGO :` et suivez l'instruction écrite
-   juste au-dessus de chaque pastille.
+   juste au-dessus de chaque nom.
 4. Refaites la même chose dans `en/index.html` (le chemin y commence
    par `../`).
 

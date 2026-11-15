@@ -8,7 +8,7 @@
   <link rel="icon" href="images/logo.jpg">
   <!-- Protection de secours : s'applique même sur un hébergeur qui
        ne lit pas le fichier _headers (GitHub Pages, par exemple). -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="alternate" hreflang="fr" href="contact.html">
   <link rel="alternate" hreflang="en" href="en/contact.html">
@@ -32,7 +32,7 @@
         <a href="nos-actions.html">Nos actions</a>
         <a href="actualites.html">Actualités</a>
         <a href="contact.html" class="actif">Contact</a>
-        <span class="langues"><a href="#" class="actif">FR</a><span>|</span><a href="en/contact.html">EN</a></span>
+        <span class="langues"><span class="actif" aria-current="page">FR</span><span class="sep">|</span><a href="en/contact.html">EN</a></span>
         <a href="#don" class="btn btn--don">Faire un don</a>
       </nav>
     </div>
@@ -62,17 +62,23 @@
         <span class="sur-titre">Écrivez-nous</span>
         <h2>Envoyer un message</h2>
 
-        <!-- IMPORTANT — POUR ACTIVER LE FORMULAIRE :
-             Ce formulaire utilise le service gratuit Formspree
-             (il envoie les messages directement à votre e-mail,
-             sans serveur, de façon sécurisée).
-             1. Créez un compte gratuit sur https://formspree.io
-             2. Créez un formulaire et copiez son adresse
-                (elle ressemble à https://formspree.io/f/abcdwxyz)
-             3. Remplacez VOTRE-CODE-ICI ci-dessous par votre code.
-             Le champ caché "_gotcha" est un piège anti-robots (anti-spam) :
-             ne le supprimez pas. -->
-        <form class="form-contact" action="https://formspree.io/f/VOTRE-CODE-ICI" method="POST">
+        <!-- COMMENT CE FORMULAIRE FONCTIONNE
+             Le site est entièrement statique : il n'a aucun serveur
+             capable d'envoyer un courriel par lui-même. Plutôt que de
+             dépendre d'un service extérieur (qui verrait passer tous les
+             messages, et qu'il faut payer au-delà d'un certain volume),
+             le formulaire prépare le message dans le logiciel de
+             messagerie du visiteur, qui l'envoie lui-même.
+             Conséquences, assumées :
+               • aucun message ne transite par un tiers ;
+               • rien à configurer, rien à renouveler, rien à payer ;
+               • le visiteur voit ce qu'il envoie et garde une copie.
+             Le code se trouve dans js/main.js (section FORMULAIRE).
+             Le champ caché "_gotcha" est un piège anti-robots : ne le
+             supprimez pas. -->
+        <form class="form-contact" id="form-contact"
+              action="mailto:contact@fercomex-tcn.org" method="POST"
+              enctype="text/plain">
           <label for="nom">Votre nom</label>
           <input type="text" id="nom" name="nom" required maxlength="100" autocomplete="name">
 
@@ -87,8 +93,15 @@
 
           <input type="text" name="_gotcha" class="champ-cache" tabindex="-1" autocomplete="off">
 
-          <button type="submit" class="btn btn--vert">Envoyer le message</button>
+          <button type="submit" class="btn btn--vert">Préparer le message</button>
         </form>
+
+        <p class="note-form">
+          Ce bouton ouvre votre logiciel de messagerie avec le message déjà
+          rédigé ; il ne reste qu'à l'envoyer. Vous pouvez aussi écrire
+          directement à
+          <a href="mailto:contact@fercomex-tcn.org">contact@fercomex-tcn.org</a>.
+        </p>
       </div>
 
       <div>
@@ -101,14 +114,29 @@
           <p><strong>Téléphone :</strong> <a href="tel:+243973975664">+243 973 975 664</a></p>
         </div>
 
-        <!-- RÉSEAUX SOCIAUX : remplacez # par vos vrais liens,
-             ou supprimez les lignes des réseaux que vous n'avez pas. -->
-        <h3 style="color:var(--vert-foret); margin-top:32px;">Suivez-nous</h3>
+        <h3 style="color:var(--vert-foret); margin-top:32px;">Notre identité</h3>
         <div class="coordonnees">
-          <a href="#">Facebook</a>
-          <a href="#">X (Twitter)</a>
-          <a href="#">LinkedIn</a>
+          <p>FERCOMEX-TCN est une organisation non gouvernementale de
+          développement (ONGD) de droit congolais, active depuis 1997 dans
+          la province du Haut-Katanga.</p>
+          <p>Nous échangeons en <strong>français</strong>, en
+          <strong>anglais</strong> et en <strong>swahili</strong>.</p>
         </div>
+
+        <!-- RÉSEAUX SOCIAUX — bloc volontairement retiré.
+             Un lien « Facebook » qui ne mène nulle part fait plus de tort
+             qu'une absence de lien : le visiteur en conclut que le site
+             n'est pas tenu à jour, et un bailleur aussi.
+             MODIFIEZ ICI le jour où l'ONG aura une vraie page : copiez
+             les quatre lignes ci-dessous juste au-dessus de ce
+             commentaire, en remplaçant VOTRE-PAGE par l'adresse complète.
+
+             h3 style="color:var(--vert-foret); margin-top:32px;" Suivez-nous /h3
+             div class="coordonnees"
+               a href="https://www.facebook.com/VOTRE-PAGE" target="_blank" rel="noopener" Facebook /a
+             /div
+
+             (Remettez les chevrons < et > autour de chaque balise.) -->
       </div>
     </div>
   </section>

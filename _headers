@@ -28,9 +28,12 @@
   # Bloque les anciens greffons Flash / PDF inter-domaines
   X-Permitted-Cross-Domain-Policies: none
 
-  # N'autorise QUE ce dont le site a besoin : ses propres fichiers
-  # et l'envoi du formulaire vers Formspree. Aucun autre domaine.
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+  # N'autorise QUE ce dont le site a besoin : ses propres fichiers, plus
+  # mailto: pour le formulaire de contact. AUCUN domaine extérieur : pas
+  # de police Google, pas de script d'analyse, pas de service de
+  # formulaire. Un site qui ne charge rien de l'extérieur n'a aucune
+  # fuite de données à déclarer, et rien à surveiller chez un tiers.
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' mailto:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
 
   # Force le HTTPS pendant un an
   Strict-Transport-Security: max-age=31536000; includeSubDomains

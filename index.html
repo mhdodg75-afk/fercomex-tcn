@@ -8,7 +8,7 @@
   <link rel="icon" href="images/logo.jpg">
   <!-- Protection de secours : s'applique même sur un hébergeur qui
        ne lit pas le fichier _headers (GitHub Pages, par exemple). -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="alternate" hreflang="fr" href="index.html">
   <link rel="alternate" hreflang="en" href="en/index.html">
@@ -33,7 +33,7 @@
         <a href="nos-actions.html">Nos actions</a>
         <a href="actualites.html">Actualités</a>
         <a href="contact.html">Contact</a>
-        <span class="langues"><a href="#" class="actif">FR</a><span>|</span><a href="en/index.html">EN</a></span>
+        <span class="langues"><span class="actif" aria-current="page">FR</span><span class="sep">|</span><a href="en/index.html">EN</a></span>
         <a href="contact.html#don" class="btn btn--don">Faire un don</a>
       </nav>
     </div>
@@ -81,15 +81,19 @@
   </section>
 
   <!-- ==================== REPÈRES ====================
-       Les chiffres sont intégrés dans une phrase, pas alignés en compteurs.
-       MODIFIEZ ICI quand vous aurez vos chiffres réels : remplacez les
-       tirets par les nombres, dans le texte lui-même. -->
+       Volontairement SANS chiffres d'impact (nombre de bénéficiaires,
+       d'hectares, de tonnes…). Un bailleur sait qu'un chiffre affiché
+       sans source est un chiffre qu'on lui demande de croire ; une
+       phrase vérifiable vaut mieux qu'un compteur impressionnant.
+       MODIFIEZ ICI le jour où vous aurez des chiffres issus d'un rapport
+       d'activité signé : ajoutez-les dans la phrase en citant le rapport
+       et son année. N'inventez jamais un chiffre « approximatif ». -->
   <section class="section section--sable">
     <div class="conteneur">
       <p class="reperes">
-        Depuis <strong>1997</strong>, FERCOMEX-TCN accompagne les communautés du Haut-Katanga :
-        près de <strong>trente ans</strong> de présence continue sur le terrain, <strong>quatre</strong>
-        domaines d'action et une ferme communautaire à Kaisala, au service des petits producteurs.
+        Fondée en <strong>1997</strong>, FERCOMEX-TCN travaille sans interruption auprès des
+        communautés du Haut-Katanga : une présence continue sur le terrain, une ferme
+        communautaire à Kaisala et un accompagnement de proximité des petits producteurs.
       </p>
     </div>
   </section>
@@ -208,7 +212,7 @@
             <span class="logo-texte">GWCN</span>
           </span>
           <span class="reseau-ligne__texte">
-            <strong>GWCN</strong>
+            <strong>Global Waste Cleaning Network</strong>
             <span>Réseau international d'ONG, d'institutions de recherche et d'entreprises actives sur la réduction des déchets, présent dans 188 pays.</span>
             <a href="https://gwcnweb.org/" target="_blank" rel="noopener">Visiter le site</a>
           </span>

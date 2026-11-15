@@ -8,7 +8,7 @@
   <link rel="icon" href="../images/logo.jpg">
   <!-- Protection de secours : s'applique même sur un hébergeur qui
        ne lit pas le fichier _headers (GitHub Pages, par exemple). -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="alternate" hreflang="fr" href="../index.html">
   <link rel="alternate" hreflang="en" href="index.html">
@@ -32,7 +32,7 @@
         <a href="our-work.html">Our work</a>
         <a href="news.html">News</a>
         <a href="contact.html">Contact</a>
-        <span class="langues"><a href="../index.html">FR</a><span>|</span><a href="#" class="actif">EN</a></span>
+        <span class="langues"><a href="../index.html">FR</a><span class="sep">|</span><span class="actif" aria-current="page">EN</span></span>
         <a href="contact.html#donate" class="btn btn--don">Donate</a>
       </nav>
     </div>
@@ -72,13 +72,15 @@
     </div>
   </section>
 
-  <!-- ==================== KEY FACTS ==================== -->
+  <!-- ==================== KEY FACTS ====================
+       Deliberately WITHOUT impact figures. See the French homepage
+       (index.html, same section) for the full explanation. -->
   <section class="section section--sable">
     <div class="conteneur">
       <p class="reperes">
-        Since <strong>1997</strong>, FERCOMEX-TCN has worked alongside the communities of Haut-Katanga:
-        nearly <strong>thirty years</strong> of continuous presence in the field, <strong>four</strong>
-        areas of work and a community farm at Kaisala serving smallholder farmers.
+        Founded in <strong>1997</strong>, FERCOMEX-TCN has worked without interruption alongside
+        the communities of Haut-Katanga: a continuous presence in the field, a community farm
+        at Kaisala and hands-on support for smallholder farmers.
       </p>
     </div>
   </section>
@@ -182,7 +184,7 @@
             <span class="logo-texte">GWCN</span>
           </span>
           <span class="reseau-ligne__texte">
-            <strong>GWCN</strong>
+            <strong>Global Waste Cleaning Network</strong>
             <span>International network of NGOs, research institutions and companies working on waste reduction, present in 188 countries.</span>
             <a href="https://gwcnweb.org/" target="_blank" rel="noopener">Visit the website</a>
           </span>

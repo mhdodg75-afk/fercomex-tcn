@@ -1,11 +1,19 @@
 /* ============================================================
-   POLICES — hébergées sur le site, aucune requête vers Google
+   POLICES
    ------------------------------------------------------------
-   Les fichiers attendus sont dans le dossier fonts/.
-   S'ils sont absents, le site utilise automatiquement les polices
-   de l'ordinateur du visiteur (Georgia et la police système) :
-   l'affichage reste correct. Voir fonts/LISEZ-MOI.txt pour les ajouter.
+   Le site utilise les polices déjà présentes sur l'ordinateur du
+   visiteur (Georgia pour les titres, la police système pour le
+   texte). Résultat : aucune requête vers Google, aucun fichier à
+   télécharger, affichage instantané.
+
+   POUR UTILISER LES POLICES FRAUNCES + INTER (optionnel) :
+   1. Suivez fonts/LISEZ-MOI.txt pour déposer les 5 fichiers .woff2
+      dans le dossier fonts/.
+   2. Enlevez la ligne "DÉBUT" et la ligne "FIN" ci-dessous.
+   N'enlevez PAS ces lignes avant d'avoir déposé les fichiers :
+   le navigateur chercherait 5 fichiers inexistants à chaque page.
    ============================================================ */
+/* DÉBUT — polices optionnelles
 @font-face {
   font-family: "Fraunces";
   src: url("../fonts/fraunces-600.woff2") format("woff2");
@@ -31,6 +39,7 @@
   src: url("../fonts/inter-700.woff2") format("woff2");
   font-weight: 700; font-style: normal; font-display: swap;
 }
+   FIN — polices optionnelles */
 
 /* ============================================================
    FERCOMEX-TCN — Feuille de style principale
@@ -359,7 +368,14 @@ h3 { font-size: 20px; }
 .form-contact button { margin-top: 24px; border: none; cursor: pointer; font-family: inherit; }
 .champ-cache { display: none; }
 
+/* Phrase explicative sous le bouton du formulaire */
+.note-form {
+  max-width: 640px; margin-top: 16px;
+  font-size: 14px; line-height: 1.6; color: var(--texte-doux);
+}
+
 .coordonnees { display: grid; gap: 8px; margin-top: 20px; }
+.coordonnees p { font-size: 15px; line-height: 1.65; }
 
 /* ---- Adaptation mobile ---- */
 @media (max-width: 860px) {
@@ -487,13 +503,14 @@ h3 { font-size: 20px; }
 
 /* ---- Sélecteur de langue ---- */
 .langues { display: flex; align-items: center; gap: 4px; margin-left: 4px; }
-.langues a {
+.langues a, .langues .actif {
   font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
   color: var(--texte-doux); padding: 4px 7px; border-radius: 6px;
 }
 .langues a:hover { text-decoration: none; background: var(--vert-pale); color: var(--vert-foret); }
-.langues a.actif { background: var(--vert-foret); color: var(--blanc); }
-.langues span { color: #c8d2bd; font-size: 12px; }
+/* La langue affichée n'est pas un lien : c'est la page où l'on est déjà. */
+.langues .actif { background: var(--vert-foret); color: var(--blanc); }
+.langues .sep { color: #c8d2bd; font-size: 12px; }
 
 /* ---- Ruban de devise trilingue (sous l'en-tête) ----
    L'alternance est faite 100 % en CSS : elle fonctionne même si le
@@ -555,31 +572,21 @@ h3 { font-size: 20px; }
   margin-bottom: 14px;
 }
 .logo-zone img { max-height: 56px; max-width: 160px; object-fit: contain; }
-/* Pastille affichée tant que le vrai logo n'est pas déposé */
+/* Nom d'un réseau composé dans la police des titres, quand nous n'avons
+   pas encore son logo officiel. Volontairement SANS pastille ni cadre :
+   un nom bien typographié tient sa place à côté d'un vrai logo sans
+   donner l'impression qu'une image manque.
+   MODIFIEZ ICI : dès que vous recevez un logo officiel, remplacez dans
+   le HTML       <span class="logo-texte">GWCN</span>
+   par           <img src="images/logos/gwcn.png" alt="GWCN">          */
 .logo-texte {
-  font-family: var(--police-titres); font-weight: 700; font-size: 20px;
-  color: var(--vert-foret); background: var(--vert-pale);
-  border-radius: 10px; padding: 10px 20px; letter-spacing: 0.5px;
+  font-family: var(--police-titres); font-weight: 700; font-size: 19px;
+  color: var(--vert-foret); letter-spacing: 0.4px;
+  line-height: 1.15; text-align: center;
 }
-.logo-texte--bleu { color: var(--bleu-fleuve); background: #e4eff9; }
-.logo-texte--ambre { color: var(--ambre-fonce); background: #fbeedb; }
 
 .membre-de__carte { text-align: center; }
 .membre-de__carte p, .membre-de__carte a { text-align: left; }
-
-.grille-partenaires {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 18px; margin-top: 8px;
-}
-.partenaire-carte {
-  background: var(--blanc); border: 1px solid #e4e8dd; border-radius: 12px;
-  padding: 20px 18px; text-align: center;
-}
-.partenaire-carte .logo-zone { height: 44px; margin-bottom: 10px; }
-.partenaire-carte .logo-texte { font-size: 15px; padding: 7px 14px; }
-.partenaire-carte__nom { font-size: 14px; font-weight: 600; color: var(--texte); }
-.partenaire-carte__role { font-size: 12.5px; color: var(--texte-doux); margin-top: 3px; }
-
 /* ---- Bloc vidéo ---- */
 /* Cette vidéo est au format portrait (filmée au téléphone) : on limite
    sa largeur pour qu'elle ne s'étire pas sur tout l'écran.
@@ -646,7 +653,7 @@ h3 { font-size: 20px; }
   align-items: center; justify-content: center; padding-top: 2px;
 }
 .reseau-ligne__logo img { max-width: 92px; max-height: 60px; object-fit: contain; }
-.reseau-ligne__logo .logo-texte { font-size: 15px; padding: 7px 12px; }
+.reseau-ligne__logo .logo-texte { font-size: 17px; }
 .reseau-ligne__texte { display: block; }
 .reseau-ligne__texte strong {
   display: block; font-size: 16.5px; color: var(--texte); margin-bottom: 3px;

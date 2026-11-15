@@ -8,7 +8,7 @@
   <link rel="icon" href="../images/logo.jpg">
   <!-- Protection de secours : s'applique même sur un hébergeur qui
        ne lit pas le fichier _headers (GitHub Pages, par exemple). -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="alternate" hreflang="fr" href="../contact.html">
   <link rel="alternate" hreflang="en" href="contact.html">
@@ -32,7 +32,7 @@
         <a href="our-work.html">Our work</a>
         <a href="news.html">News</a>
         <a href="contact.html" class="actif">Contact</a>
-        <span class="langues"><a href="../contact.html">FR</a><span>|</span><a href="#" class="actif">EN</a></span>
+        <span class="langues"><a href="../contact.html">FR</a><span class="sep">|</span><span class="actif" aria-current="page">EN</span></span>
         <a href="contact.html#donate" class="btn btn--don">Donate</a>
       </nav>
     </div>
@@ -61,8 +61,11 @@
         <span class="sur-titre">Write to us</span>
         <h2>Send a message</h2>
 
-        <!-- IMPORTANT: use the SAME Formspree code as the French page. -->
-        <form class="form-contact" action="https://formspree.io/f/VOTRE-CODE-ICI" method="POST">
+        <!-- See contact.html (French version) for how this form works.
+             The _gotcha field is an anti-robot trap: do not remove it. -->
+        <form class="form-contact" id="form-contact"
+              action="mailto:contact@fercomex-tcn.org" method="POST"
+              enctype="text/plain">
           <label for="name">Your name</label>
           <input type="text" id="name" name="name" required maxlength="100" autocomplete="name">
 
@@ -77,8 +80,14 @@
 
           <input type="text" name="_gotcha" class="champ-cache" tabindex="-1" autocomplete="off">
 
-          <button type="submit" class="btn btn--vert">Send message</button>
+          <button type="submit" class="btn btn--vert">Prepare message</button>
         </form>
+
+        <p class="note-form">
+          This button opens your email program with the message already
+          written; you only need to send it. You can also write directly to
+          <a href="mailto:contact@fercomex-tcn.org">contact@fercomex-tcn.org</a>.
+        </p>
       </div>
 
       <div>
@@ -90,12 +99,16 @@
           <p><strong>Phone:</strong> <a href="tel:+243973975664">+243 973 975 664</a></p>
         </div>
 
-        <h3 style="color:var(--vert-foret); margin-top:32px;">Follow us</h3>
+        <h3 style="color:var(--vert-foret); margin-top:32px;">Who we are</h3>
         <div class="coordonnees">
-          <a href="#">Facebook</a>
-          <a href="#">X (Twitter)</a>
-          <a href="#">LinkedIn</a>
+          <p>FERCOMEX-TCN is a non-governmental development organisation
+          (ONGD) incorporated under Congolese law, active since 1997 in
+          Haut-Katanga province.</p>
+          <p>We correspond in <strong>French</strong>,
+          <strong>English</strong> and <strong>Swahili</strong>.</p>
         </div>
+
+        <!-- SOCIAL LINKS removed on purpose: see contact.html (French). -->
       </div>
     </div>
   </section>

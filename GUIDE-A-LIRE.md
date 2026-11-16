@@ -132,62 +132,70 @@ supprimez pas.**
 ### 4.2 — ⚠️ Indispensable : faire exister `contact@fercomex-tcn.org`
 
 L'adresse affichée sur le site **n'existe pas encore**. Tant que ce n'est
-pas fait, tout message envoyé par le formulaire se perd.
+pas fait, tout message envoyé par le formulaire se perd. C'est le défaut
+le plus urgent du site.
 
-Solution retenue : **Zoho Mail, offre gratuite** — 5 boîtes aux lettres,
-5 Go chacune, avec votre propre nom de domaine. C'est la seule option
-gratuite qui permette aussi de **répondre** depuis `contact@fercomex-tcn.org`.
+#### Ce qui a été testé, et pourquoi c'est moins simple que prévu
 
-#### ⚠️ À savoir AVANT de commencer
+- **L'offre gratuite de Zoho Mail n'est pas disponible au Canada.** Elle
+  existe, mais Zoho la réserve à certains centres de données
+  (« Available only in select data centers »). À l'inscription depuis le
+  Canada, seuls les forfaits payants sont proposés. Inutile d'insister.
 
-Sur l'offre **gratuite**, Zoho ne fournit **ni IMAP, ni POP, ni SMTP**,
-et ne fait **pas de redirection** vers une autre adresse. Conséquence
-concrète : **vous ne pourrez pas lire ce courrier dans Gmail.** Vous
-l'ouvrirez dans l'application **Zoho Mail** (gratuite, Android et
-iPhone) ou sur `mail.zoho.com`.
+- **L'astuce « tout faire depuis Gmail » va cesser de fonctionner.**
+  Google a annoncé la suppression de « Envoyer des e-mails en tant que »
+  (*Send mail as*) pour les adresses qui ne sont pas hébergées chez
+  Google, **en janvier 2027**. Les ajouts de nouvelles adresses sont déjà
+  bloqués progressivement. Ne construisez rien là-dessus : ce serait à
+  refaire dans quelques semaines.
 
-Sur **Mail Lite** (15 C$ par an), cette limite disparaît : IMAP et
-ActiveSync sont inclus, donc le courrier de l'ONG arrive dans Gmail
-comme n'importe quel autre compte. Si les 15 C$ sont acceptables pour
-l'ONG, c'est la solution la plus simple à vivre au quotidien.
+#### La marche à suivre recommandée
 
-> Si vous avez déjà activé **Email Routing** chez Cloudflare :
-> désactivez-le d'abord (**Email** → **Email Routing** → **Settings** →
-> **Disable**). Les deux services se disputent les mêmes enregistrements
-> MX et ne peuvent pas fonctionner ensemble.
+**Étape 1 — aujourd'hui, 5 minutes, gratuit : boucher le trou.**
 
-#### Les étapes
+Activez la redirection Cloudflare, pour qu'aucun message ne se perde :
 
-1. **Créer le compte.** ⚠️ L'offre gratuite **ne s'affiche pas** sur la
-   page des tarifs vue depuis le Canada : Zoho la réserve à certaines
-   régions (« Available only in select data centers »). Ne la cherchez
-   pas dans la grille de prix, vous perdriez votre temps.
+1. https://dash.cloudflare.com → `fercomex-tcn.org`
+2. Menu de gauche : **Email** → **Email Routing** → **Get started**
+3. Adresse `contact` → destination : votre Gmail
+4. Cliquez le lien de confirmation reçu par courriel
+5. Cloudflare ajoute seul les enregistrements DNS nécessaires
 
-   Passez par le lien direct :
-   **https://mail.zoho.com/signup?type=org&plan=free**
+Tout ce qui est envoyé à `contact@fercomex-tcn.org` arrive alors dans
+votre boîte habituelle. **Limite :** vous pouvez recevoir, pas envoyer.
+Si vous répondez, votre adresse personnelle s'affiche.
 
-   Choisissez **« Sign up with a domain I already own »** et saisissez
-   `fercomex-tcn.org`.
+**Étape 2 — quand vous voulez : pouvoir répondre au nom de l'ONG.**
 
-   **Si ce lien refuse l'inscription**, prenez **Mail Lite** à
-   **1,25 C$ par mois et par boîte, facturé à l'année — soit 15 C$ par
-   an** pour une seule adresse. Ce n'est pas un échec : Mail Lite est
-   en réalité **meilleur** que l'offre gratuite, parce qu'il inclut
-   **ActiveSync, IMAP et la redirection**. Autrement dit, vous pourrez
-   lire et envoyer le courrier de l'ONG **directement depuis Gmail**,
-   sans installer d'application supplémentaire. Le reste de la marche à
-   suivre ci-dessous est identique.
+Deux voies, au choix :
 
-2. **Prouver que le domaine est à vous.** Zoho affiche un enregistrement
+| | Zoho **Mail Lite** | **Google for Nonprofits** |
+|---|---|---|
+| Coût | ≈ 1,56 C$/mois/boîte, facturé à l'année (≈ 19 C$/an + taxes) | Gratuit |
+| Délai | immédiat | plusieurs semaines (dossier à valider) |
+| Conditions | aucune | statuts de l'ONGD + preuve d'enregistrement ; **vérifiez d'abord que la RDC est un pays éligible** |
+| Accès | IMAP inclus → n'importe quel logiciel de messagerie | Google Workspace complet |
+
+Si l'ONG peut mettre 19 C$ par an, **Mail Lite règle la question ce
+soir**. Si elle n'a aucun budget, montez le dossier Google for
+Nonprofits et restez sur la redirection Cloudflare en attendant.
+
+> ⚠️ Les deux services se disputent les enregistrements **MX**. Avant de
+> passer à Zoho ou à Google, désactivez d'abord la redirection
+> Cloudflare : **Email** → **Email Routing** → **Settings** → **Disable**.
+
+#### Si vous prenez Zoho Mail Lite — les réglages DNS
+
+1. **Prouver que le domaine est à vous.** Zoho affiche un enregistrement
    TXT. Dans Cloudflare : `fercomex-tcn.org` → **DNS** → **Records** →
    **Add record** → Type **TXT**, Name `@`, Content = la valeur donnée
    par Zoho. Revenez chez Zoho et cliquez **Verify**.
 
-3. **Créer la boîte** `contact` → elle devient le compte administrateur.
+2. **Créer la boîte** `contact` → elle devient le compte administrateur.
 
-4. **Rediriger le courrier vers Zoho.** Toujours dans Cloudflare → DNS,
-   supprimez les anciens enregistrements **MX** s'il y en a, puis
-   ajoutez les trois que Zoho vous indique. Ils ressemblent à ceci :
+3. **Rediriger le courrier vers Zoho.** Dans Cloudflare → DNS,
+   supprimez les anciens **MX**, puis ajoutez les trois que Zoho indique.
+   Ils ressemblent à ceci :
 
    | Type | Name | Mail server   | Priority |
    |------|------|---------------|----------|
@@ -196,10 +204,10 @@ l'ONG, c'est la solution la plus simple à vivre au quotidien.
    | MX   | `@`  | `mx3.zoho.com` | 50 |
 
    ⚠️ Recopiez **exactement** les valeurs affichées par Zoho : elles
-   changent selon le centre de données où votre compte a été créé.
+   changent selon le centre de données où le compte a été créé.
 
-5. **Prouver que vos courriels sont authentiques** (sinon ils partent
-   en indésirable chez vos bailleurs) :
+4. **Prouver que vos courriels sont authentiques** (sinon ils partent en
+   indésirable chez vos bailleurs) :
 
    | Type | Name              | Content |
    |------|-------------------|---------|
@@ -214,20 +222,18 @@ l'ONG, c'est la solution la plus simple à vivre au quotidien.
    par `v=spf1` existe déjà, **modifiez-le** au lieu d'en ajouter un
    second — deux SPF annulent la protection.
 
-6. **Vérifier.** Depuis votre Gmail, écrivez à `contact@fercomex-tcn.org` :
-   le message doit arriver dans Zoho. Répondez depuis Zoho : la réponse
-   doit partir de `contact@fercomex-tcn.org`, et ne pas tomber dans les
-   indésirables.
-
-Comptez 20 à 30 minutes, dont une attente pour la propagation DNS
-(quelques minutes chez Cloudflare, parfois jusqu'à 24 h).
+5. **Vérifier.** Depuis votre Gmail, écrivez à `contact@fercomex-tcn.org`.
+   Répondez depuis Zoho : la réponse doit partir de
+   `contact@fercomex-tcn.org` et ne pas tomber dans les indésirables.
 
 #### Et après
 
-Vous pourrez créer jusqu'à 4 autres adresses gratuitement, par exemple
-`direction@` ou `partenariats@`. Pensez alors à activer la **double
-authentification** sur le compte Zoho : cette boîte deviendra l'adresse
-de référence de l'ONG, et donc une cible.
+Chez Zoho, chaque boîte supplémentaire (`direction@`, `partenariats@`…)
+est facturée au même tarif. Vous pouvez aussi créer des **alias**
+gratuits : `info@` qui arrive dans la boîte `contact@`, par exemple.
+
+Dans tous les cas, activez la **double authentification** sur le compte :
+cette boîte devient l'adresse de référence de l'ONG, donc une cible.
 
 ---
 

@@ -140,15 +140,16 @@ gratuite qui permette aussi de **répondre** depuis `contact@fercomex-tcn.org`.
 
 #### ⚠️ À savoir AVANT de commencer
 
-Sur l'offre gratuite, Zoho ne fournit **ni IMAP, ni POP, ni SMTP**, et
-ne fait **pas de redirection** vers une autre adresse. Conséquence
+Sur l'offre **gratuite**, Zoho ne fournit **ni IMAP, ni POP, ni SMTP**,
+et ne fait **pas de redirection** vers une autre adresse. Conséquence
 concrète : **vous ne pourrez pas lire ce courrier dans Gmail.** Vous
 l'ouvrirez dans l'application **Zoho Mail** (gratuite, Android et
 iPhone) ou sur `mail.zoho.com`.
 
-C'est une application de plus sur le téléphone, mais c'est le prix à
-payer pour écrire à un bailleur depuis l'adresse de l'ONG plutôt que
-depuis une adresse Gmail personnelle.
+Sur **Mail Lite** (15 C$ par an), cette limite disparaît : IMAP et
+ActiveSync sont inclus, donc le courrier de l'ONG arrive dans Gmail
+comme n'importe quel autre compte. Si les 15 C$ sont acceptables pour
+l'ONG, c'est la solution la plus simple à vivre au quotidien.
 
 > Si vous avez déjà activé **Email Routing** chez Cloudflare :
 > désactivez-le d'abord (**Email** → **Email Routing** → **Settings** →
@@ -157,11 +158,25 @@ depuis une adresse Gmail personnelle.
 
 #### Les étapes
 
-1. **Créer le compte.** Allez sur https://www.zoho.com/mail/ → **Pricing**
-   → descendez jusqu'à **Forever Free Plan** → **Sign Up Now**.
-   (L'offre gratuite n'est pas affichée en haut de page : il faut
-   descendre.) Choisissez **« Sign up with a domain I already own »** et
-   saisissez `fercomex-tcn.org`.
+1. **Créer le compte.** ⚠️ L'offre gratuite **ne s'affiche pas** sur la
+   page des tarifs vue depuis le Canada : Zoho la réserve à certaines
+   régions (« Available only in select data centers »). Ne la cherchez
+   pas dans la grille de prix, vous perdriez votre temps.
+
+   Passez par le lien direct :
+   **https://mail.zoho.com/signup?type=org&plan=free**
+
+   Choisissez **« Sign up with a domain I already own »** et saisissez
+   `fercomex-tcn.org`.
+
+   **Si ce lien refuse l'inscription**, prenez **Mail Lite** à
+   **1,25 C$ par mois et par boîte, facturé à l'année — soit 15 C$ par
+   an** pour une seule adresse. Ce n'est pas un échec : Mail Lite est
+   en réalité **meilleur** que l'offre gratuite, parce qu'il inclut
+   **ActiveSync, IMAP et la redirection**. Autrement dit, vous pourrez
+   lire et envoyer le courrier de l'ONG **directement depuis Gmail**,
+   sans installer d'application supplémentaire. Le reste de la marche à
+   suivre ci-dessous est identique.
 
 2. **Prouver que le domaine est à vous.** Zoho affiche un enregistrement
    TXT. Dans Cloudflare : `fercomex-tcn.org` → **DNS** → **Records** →
